@@ -23,7 +23,8 @@
       "groups",
       "students",
       "parents",
-      "risk-bank"
+      "risk-bank",
+      "changelog"
     ]
   },
   "logo": {
