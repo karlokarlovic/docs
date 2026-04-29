@@ -9,16 +9,18 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "products": [
-      {
-        "product": "Untitled Product"
-      },
-      {
-        "product": "Parents",
-        "pages": [
-          "parent-overview"
-        ]
-      }
+    "pages": [
+      "dashboard",
+      "excursions",
+      "tasks",
+      "forms",
+      "locations",
+      "vendors",
+      "staff",
+      "groups",
+      "students",
+      "parents",
+      "risk-bank"
     ]
   },
   "logo": {
