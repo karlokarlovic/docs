@@ -15,6 +15,8 @@
     "pages": [
       {
         "group": "Excursions",
+        "icon": "bus",
+        "expanded": true,
         "pages": [
           "excursions",
           {
@@ -34,7 +36,8 @@
               "transport-tab",
               "reviews-tab",
               "settings-tab"
-            ]
+            ],
+            "expanded": true
           }
         ]
       },
@@ -45,36 +48,43 @@
           {
             "group": "Tasks",
             "root": "tasks",
+            "icon": "diagram-subtask",
             "pages": ["workspace-tasks", "task-overlay"]
           },
           {
             "group": "Forms",
             "root": "forms",
+            "icon": "clipboard-question",
             "pages": ["forms-list", "form-builder"]
           },
           {
             "group": "Locations",
             "root": "locations",
+            "icon": "map",
             "pages": ["locations-list", "locations-import"]
           },
           {
             "group": "Vendors",
             "root": "vendors",
+            "icon": "shop",
             "pages": ["vendors-list", "vendor-details-modal"]
           },
           {
             "group": "Staff",
             "root": "staff",
+            "icon": "user-doctor-hair-long",
             "pages": ["staff-directory", "staff-member-summary"]
           },
           {
             "group": "Groups",
             "root": "groups",
+            "icon": "people-group",
             "pages": ["groups-list", "group-detail"]
           },
           {
             "group": "Students",
             "root": "students",
+            "icon": "user-graduate",
             "pages": [
               "students-list",
               "student-upsert-modal",
@@ -85,49 +95,22 @@
           {
             "group": "Risk bank",
             "root": "risk-bank",
+            "icon": "biohazard",
             "pages": ["risk-bank-page", "risk-bank-tree", "risk-bank-modals"]
           },
           {
             "group": "Parents",
             "root": "parents",
+            "icon": "users",
             "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
           }
         ]
-      },
-
-      {
-        "group": "Locations",
-        "pages": []
-      },
-      {
-        "group": "Vendors",
-        "pages": []
-      },
-      {
-        "group": "Staff",
-        "pages": []
-      },
-      {
-        "group": "Groups",
-        "pages": []
-      },
-      {
-        "group": "Students",
-        "pages": []
-      },
-      {
-        "group": "Parents",
-        "pages": []
-      },
-      {
-        "group": "Risk bank",
-        "pages": []
       },
       "changelog"
     ]
   },
   "logo": {
-    "light": "/logo_text_dark_1.svg",
+    "light": "/logo_text_light_2.svg",
     "dark": "/logo_text_dark_2.svg",
     "href": "/"
   },
