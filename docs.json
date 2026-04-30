@@ -22,7 +22,8 @@
             "group": "Task screens",
             "pages": ["workspace-tasks", "task-overlay"]
           }
-        ]
+        ],
+        "icon": "diagram-subtask"
       },
       {
         "group": "Forms",
@@ -32,7 +33,8 @@
             "group": "Form screens",
             "pages": ["forms-list", "form-builder"]
           }
-        ]
+        ],
+        "icon": "clipboard-question"
       },
       {
         "group": "Locations",
@@ -42,7 +44,8 @@
             "group": "Location screens",
             "pages": ["locations-list", "locations-import"]
           }
-        ]
+        ],
+        "icon": "map"
       },
       {
         "group": "Vendors",
@@ -52,7 +55,8 @@
             "group": "Vendor screens",
             "pages": ["vendors-list", "vendor-details-modal"]
           }
-        ]
+        ],
+        "icon": "shop"
       },
       {
         "group": "Staff",
@@ -62,7 +66,8 @@
             "group": "Staff screens",
             "pages": ["staff-directory", "staff-member-summary"]
           }
-        ]
+        ],
+        "icon": "user-doctor-hair-long"
       },
       {
         "group": "Groups",
@@ -72,7 +77,8 @@
             "group": "Group screens",
             "pages": ["groups-list", "group-detail"]
           }
-        ]
+        ],
+        "icon": "people-group"
       },
       {
         "group": "Students",
@@ -87,7 +93,8 @@
               "parent-student-relationships"
             ]
           }
-        ]
+        ],
+        "icon": "user-graduate"
       },
       {
         "group": "Parents",
@@ -97,7 +104,8 @@
             "group": "Parent screens",
             "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
           }
-        ]
+        ],
+        "icon": "users"
       },
       {
         "group": "Risk bank",
@@ -107,7 +115,8 @@
             "group": "Risk bank screens",
             "pages": ["risk-bank-page", "risk-bank-tree", "risk-bank-modals"]
           }
-        ]
+        ],
+        "icon": "biohazard"
       },
       "changelog",
       {
@@ -131,14 +140,17 @@
               "transport-tab",
               "reviews-tab",
               "settings-tab"
-            ]
+            ],
+            "expanded": true
           }
-        ]
+        ],
+        "icon": "bus",
+        "expanded": true
       }
     ]
   },
   "logo": {
-    "light": "/logo_text_dark_1.svg",
+    "light": "/logo_text_light_2.svg",
     "dark": "/logo_text_dark_2.svg",
     "href": "/"
   },
