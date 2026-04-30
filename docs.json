@@ -13,103 +13,6 @@
   },
   "navigation": {
     "pages": [
-      "dashboard",
-      {
-        "group": "Tasks",
-        "pages": [
-          "tasks",
-          {
-            "group": "Task screens",
-            "pages": ["workspace-tasks", "task-overlay"]
-          }
-        ]
-      },
-      {
-        "group": "Forms",
-        "pages": [
-          "forms",
-          {
-            "group": "Form screens",
-            "pages": ["forms-list", "form-builder"]
-          }
-        ]
-      },
-      {
-        "group": "Locations",
-        "pages": [
-          "locations",
-          {
-            "group": "Location screens",
-            "pages": ["locations-list", "locations-import"]
-          }
-        ]
-      },
-      {
-        "group": "Vendors",
-        "pages": [
-          "vendors",
-          {
-            "group": "Vendor screens",
-            "pages": ["vendors-list", "vendor-details-modal"]
-          }
-        ]
-      },
-      {
-        "group": "Staff",
-        "pages": [
-          "staff",
-          {
-            "group": "Staff screens",
-            "pages": ["staff-directory", "staff-member-summary"]
-          }
-        ]
-      },
-      {
-        "group": "Groups",
-        "pages": [
-          "groups",
-          {
-            "group": "Group screens",
-            "pages": ["groups-list", "group-detail"]
-          }
-        ]
-      },
-      {
-        "group": "Students",
-        "pages": [
-          "students",
-          {
-            "group": "Student screens",
-            "pages": [
-              "students-list",
-              "student-upsert-modal",
-              "students-import",
-              "parent-student-relationships"
-            ]
-          }
-        ]
-      },
-      {
-        "group": "Parents",
-        "pages": [
-          "parents",
-          {
-            "group": "Parent screens",
-            "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
-          }
-        ]
-      },
-      {
-        "group": "Risk bank",
-        "pages": [
-          "risk-bank",
-          {
-            "group": "Risk bank screens",
-            "pages": ["risk-bank-page", "risk-bank-tree", "risk-bank-modals"]
-          }
-        ]
-      },
-      "changelog",
       {
         "group": "Excursions",
         "pages": [
@@ -134,7 +37,93 @@
             ]
           }
         ]
-      }
+      },
+      "dashboard",
+      {
+        "group": "Features",
+        "pages": [
+          {
+            "group": "Tasks",
+            "root": "tasks",
+            "pages": ["workspace-tasks", "task-overlay"]
+          },
+          {
+            "group": "Forms",
+            "root": "forms",
+            "pages": ["forms-list", "form-builder"]
+          },
+          {
+            "group": "Locations",
+            "root": "locations",
+            "pages": ["locations-list", "locations-import"]
+          },
+          {
+            "group": "Vendors",
+            "root": "vendors",
+            "pages": ["vendors-list", "vendor-details-modal"]
+          },
+          {
+            "group": "Staff",
+            "root": "staff",
+            "pages": ["staff-directory", "staff-member-summary"]
+          },
+          {
+            "group": "Groups",
+            "root": "groups",
+            "pages": ["groups-list", "group-detail"]
+          },
+          {
+            "group": "Students",
+            "root": "students",
+            "pages": [
+              "students-list",
+              "student-upsert-modal",
+              "students-import",
+              "parent-student-relationships"
+            ]
+          },
+          {
+            "group": "Risk bank",
+            "root": "risk-bank",
+            "pages": ["risk-bank-page", "risk-bank-tree", "risk-bank-modals"]
+          },
+          {
+            "group": "Parents",
+            "root": "parents",
+            "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
+          }
+        ]
+      },
+
+      {
+        "group": "Locations",
+        "pages": []
+      },
+      {
+        "group": "Vendors",
+        "pages": []
+      },
+      {
+        "group": "Staff",
+        "pages": []
+      },
+      {
+        "group": "Groups",
+        "pages": []
+      },
+      {
+        "group": "Students",
+        "pages": []
+      },
+      {
+        "group": "Parents",
+        "pages": []
+      },
+      {
+        "group": "Risk bank",
+        "pages": []
+      },
+      "changelog"
     ]
   },
   "logo": {
@@ -157,15 +146,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
