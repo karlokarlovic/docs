@@ -14,7 +14,6 @@
   "navigation": {
     "pages": [
       "dashboard",
-      "excursions",
       "tasks",
       "forms",
       "locations",
@@ -24,7 +23,32 @@
       "students",
       "parents",
       "risk-bank",
-      "changelog"
+      "changelog",
+      {
+        "group": "Excursions",
+        "pages": [
+          "excursions",
+          {
+            "group": "Excursion Features",
+            "pages": [
+              "overview-tab",
+              "activity-tab",
+              "timeline-tab",
+              "participants-tab",
+              "staffing-tab",
+              "tasks-tab",
+              "emails-tab",
+              "documents-tab",
+              "forms-tab",
+              "website-tab",
+              "risk-management-tab",
+              "transport-tab",
+              "reviews-tab",
+              "settings-tab"
+            ]
+          }
+        ]
+      }
     ]
   },
   "logo": {
