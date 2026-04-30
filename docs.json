@@ -5,11 +5,11 @@
   "colors": {
     "primary": "#007799",
     "light": "#5d8f9c",
-    "dark": "#005566"
+    "dark": "#166473"
   },
   "favicon": {
-    "light": "/favicon.svg",
-    "dark": "/favicon.svg"
+    "light": "/favicon_dark.svg",
+    "dark": "/favicon_dark.svg"
   },
   "navigation": {
     "pages": [
@@ -28,8 +28,9 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "logo_text_dark_1.svg",
+    "dark": "/logo_text_dark_2.svg",
+    "href": "/"
   },
   "navbar": {
     "links": [
