@@ -28,7 +28,7 @@
     ]
   },
   "logo": {
-    "light": "logo_text_dark_1.svg",
+    "light": "/logo_text_dark_1.svg",
     "dark": "/logo_text_dark_2.svg",
     "href": "/"
   },
