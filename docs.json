@@ -1,24 +1,30 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "AnySchool.ai",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#007799",
+    "light": "#5d8f9c",
+    "dark": "#005566"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/favicon.svg",
+    "dark": "/favicon.svg"
+  },
   "navigation": {
-    "products": [
-      {
-        "product": "Untitled Product"
-      },
-      {
-        "product": "Parents",
-        "pages": [
-          "parent-overview"
-        ]
-      }
+    "pages": [
+      "dashboard",
+      "excursions",
+      "tasks",
+      "forms",
+      "locations",
+      "vendors",
+      "staff",
+      "groups",
+      "students",
+      "parents",
+      "risk-bank",
+      "changelog"
     ]
   },
   "logo": {
@@ -29,7 +35,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:hi@karstack.com"
       }
     ],
     "primary": {
@@ -52,9 +58,17 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/mintlify"
     }
+  },
+  "description": "The Excursion Management Platform",
+  "fonts": {
+    "family": "Geist"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "seo": {
+    "indexing": "all"
   }
 }
