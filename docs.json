@@ -14,6 +14,12 @@
   "navigation": {
     "pages": [
       {
+        "group": "Get started",
+        "root": "introduction",
+        "icon": "rocket",
+        "pages": ["introduction", "quickstart"]
+      },
+      {
         "group": "Excursions",
         "icon": "bus",
         "expanded": true,
