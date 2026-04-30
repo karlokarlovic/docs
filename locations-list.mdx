@@ -1,0 +1,64 @@
+---
+title: "Locations list and location panel"
+description: "The Locations page stores reusable destination records for excursion planning. You can maintain parent/child location relationships, capture a structured address, and review which excursions…"
+---
+
+The Locations page stores reusable destination records for excursion planning. You can maintain parent/child location relationships, capture a structured address, and review which excursions reference a location.
+
+## What this screen is for
+
+- Create and edit workspace locations.
+- Keep addresses and coordinates consistent using address search.
+- See which excursions currently reference a saved location.
+
+## What you can see
+
+- Page title **Locations** with the subtitle **Create and maintain reusable destination records for excursion planning.**
+- An **Import** button that navigates to the import workflow.
+- A **New Location** button.
+- A table with columns for **Name**, **Parent**, **Address**, **Updated**, and **Description**.
+- Toolbar text filters for name, parent, and address, plus column visibility controls.
+- Row actions with **Edit location**.
+- A location panel titled **Create Location** or **Edit Location** depending on context.
+
+## Common actions
+
+### Create a location
+
+Choose **New Location** to open the panel, complete the **Details** tab, then choose **Create location**.
+
+### Edit a location
+
+Choose **Edit location** from the row menu, or click the row when editing is allowed.
+
+### Review linked excursions
+
+Open the **Excursions** tab on an existing location to see a list of linked excursions. Selecting a name opens that excursion.
+
+If the location is not saved yet, the tab explains you must save first.
+
+## Location details tab fields
+
+- **Parent location** optional selector, including **No parent location**
+- **Location name** (required)
+- **Address** required search field using Mapbox search, then saving the selected result and coordinates
+- **Latitude** and **Longitude** optional manual fields
+- **Map Preview** when coordinates and saved address metadata are available
+- **Description** optional notes such as arrival instructions or meeting points
+
+## Empty, loading, and error states
+
+- If locations cannot load, you see **Failed to load locations** with a message.
+- If there are no locations, you see **No locations yet.**
+- If filters hide all rows, you see **No locations match the current filters.**
+- The excursions tab can show loading, error, empty, or a list state with clear copy for each.
+
+## Permissions and read-only behaviour
+
+**New Location**, row click editing, the edit menu item, and saving are disabled when you cannot manage locations.
+
+## Tips
+
+- Use parent locations when you want a hierarchy such as campus and building.
+- Pick the address from search results so coordinates and previews stay aligned.
+- Review linked excursions before changing an address that families may already rely on.

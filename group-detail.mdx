@@ -1,0 +1,98 @@
+---
+title: "Group detail and student roster"
+description: "The group detail page shows a single reusable group record, its metadata, and the students currently included in the group."
+---
+
+The group detail page shows a single reusable group record, its metadata, and the students currently included in the group.
+
+## What this screen is for
+
+- Review a group’s identifying information.
+- Edit the reusable group record.
+- Add and remove students in the group roster.
+
+## What you can see
+
+### Header and summary
+
+- The group name as the page title.
+- A subtitle describing the record as a reusable workspace group.
+- A badge showing how many students are currently in the group.
+- A short description of what the membership list represents.
+- An **Add Students** button when you are allowed to manage the group.
+- A **Back** link to return to the groups list.
+- An **Edit Group** action in the header when editing is allowed.
+
+### Group metadata card
+
+The right column summarises fields such as:
+
+- Description (or a message when none is provided)
+- Status
+- Group type
+- SIS code
+- Class code
+- Start date and end date
+- Colour value
+- Created and updated timestamps
+
+### Students table
+
+The roster table includes:
+
+- **Student** (display name with a secondary line when a legal name differs from the preferred display approach)
+- **Student email**
+- **SIS ID**
+
+The table supports search and filters, sorting, pagination, and column visibility controls.
+
+## Common actions
+
+### Edit the group record
+
+Choose **Edit Group** to open the panel titled **Edit Group** with the description **Update this reusable group record.**
+
+The form includes:
+
+- **Name** (required) with guidance that it is the primary display name
+- **Description** (optional)
+- **Status** and **Group Type** selectors, each with helper text
+- **Start Date** and **End Date** calendar pickers with validation messages if dates are invalid or inconsistent
+- **SIS Code** and **Class Code** optional fields, each noting uniqueness within the workspace
+- **Icon & Colour** picker described as an optional visual marker
+- A submit button **Save Group** (or **Create Group** on the list page flow)
+
+### Manage students in the group
+
+Choose **Add Students** to open **Manage Students**.
+
+The manage students panel includes:
+
+- Left pane title **Available** and right pane title **In Group**
+- A mode toggle on the left between **Students** and **Groups**
+- Search boxes for the left and right panes, with placeholders **Search students...** / **Search groups...** depending on mode
+- Loading messages such as **Loading available students...** or **Loading reusable groups...**
+- Empty messages when there is nothing to show, including **No available students.** and **No reusable groups available.**
+- An informational alert in **Groups** mode explaining that adding a group copies its current students into the roster once, and future group membership changes do not automatically sync yet
+- Arrow buttons to move selected items from left to right (add) and right to left (remove)
+- A footer showing how many students are selected, plus **Cancel** and **Save Students**
+
+## Empty, loading, and error states
+
+- While the group is loading, you may see **Loading group...**
+- If the group cannot load, you see **Failed to load group** with a message.
+- If the group does not exist, you see a **Group not found** style message.
+- The roster table shows **Loading group students...** while memberships load.
+- If roster loading fails, you see **Failed to load group students** with a message.
+- If the group has no students yet, you see **No students in this group yet.**
+- If roster filters exclude all rows, you see **No students match the current filters.**
+
+## Permissions and read-only behaviour
+
+Group editing and student membership changes require permission to manage groups. When you are read-only, actions such as **Edit Group** and **Add Students** are disabled.
+
+## Tips
+
+- When copying from another group, treat it as a one-time import of the current membership snapshot.
+- Use filters on large rosters to find a student quickly.
+- Keep start and end dates aligned with the real teaching period for the group.

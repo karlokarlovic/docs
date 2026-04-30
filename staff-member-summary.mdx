@@ -1,0 +1,66 @@
+---
+title: "Staff member summary"
+description: "The staff summary page is a read-only view focused on a single staff member’s excursion participation, with an admin-only compliance editor."
+---
+
+The staff summary page is a read-only view focused on a single staff member’s excursion participation, with an admin-only compliance editor.
+
+## What this screen is for
+
+- Confirm who the staff member is.
+- Review excursion history and how the staff member participated.
+- Maintain compliance training metadata when you are authorised.
+
+## What you can see
+
+- A header using the staff member’s display name.
+- A subtitle explaining the page is a read-only excursion summary.
+- A profile card with the staff member name.
+- A **Compliance** card.
+- An **Excursion history** table.
+
+## Compliance card
+
+The compliance card tracks training currency with pairs of controls:
+
+- **CPR trained** with an **Expiry** date field when enabled
+- **Anaphylaxis training** with **Expiry**
+- **Administration of medication training** with **Expiry**
+- **WWCC** with **Expiry**, plus **WWCC sighted** date tracking and read-only text showing who sighted the WWCC and when (when recorded)
+
+Actions:
+
+- **Reset** and **Save** appear when you are allowed to edit compliance and there are unsaved changes.
+- Saving shows a success toast with the staff member’s name.
+
+## Excursion history table
+
+Columns include:
+
+- **Excursion**
+- **Status**
+- **Staff role**
+- **Attending** (including attending vs not attending filters)
+- **Notes**
+- **Updated**
+
+Clicking a row opens the related excursion.
+
+Filtering includes excursion search plus multi-select filters where supported.
+
+## Empty, loading, and error states
+
+- While loading the summary, you see **Loading staff summary...**
+- If the summary cannot load, you see **Failed to load staff summary** with a message.
+- If history filters exclude all rows, you see **No excursions match the current filters.**
+
+## Permissions and read-only behaviour
+
+The excursion summary is read-only for normal browsing.
+
+Compliance editing is restricted to authorised administrators. If you are not authorised, controls are disabled.
+
+## Tips
+
+- Update compliance as soon as training renews so excursion planning stays trustworthy.
+- Use excursion history to confirm recent involvement before assigning responsibilities.

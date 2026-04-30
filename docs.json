@@ -14,15 +14,101 @@
   "navigation": {
     "pages": [
       "dashboard",
-      "tasks",
-      "forms",
-      "locations",
-      "vendors",
-      "staff",
-      "groups",
-      "students",
-      "parents",
-      "risk-bank",
+      {
+        "group": "Tasks",
+        "pages": [
+          "tasks",
+          {
+            "group": "Task screens",
+            "pages": ["workspace-tasks", "task-overlay"]
+          }
+        ]
+      },
+      {
+        "group": "Forms",
+        "pages": [
+          "forms",
+          {
+            "group": "Form screens",
+            "pages": ["forms-list", "form-builder"]
+          }
+        ]
+      },
+      {
+        "group": "Locations",
+        "pages": [
+          "locations",
+          {
+            "group": "Location screens",
+            "pages": ["locations-list", "locations-import"]
+          }
+        ]
+      },
+      {
+        "group": "Vendors",
+        "pages": [
+          "vendors",
+          {
+            "group": "Vendor screens",
+            "pages": ["vendors-list", "vendor-details-modal"]
+          }
+        ]
+      },
+      {
+        "group": "Staff",
+        "pages": [
+          "staff",
+          {
+            "group": "Staff screens",
+            "pages": ["staff-directory", "staff-member-summary"]
+          }
+        ]
+      },
+      {
+        "group": "Groups",
+        "pages": [
+          "groups",
+          {
+            "group": "Group screens",
+            "pages": ["groups-list", "group-detail"]
+          }
+        ]
+      },
+      {
+        "group": "Students",
+        "pages": [
+          "students",
+          {
+            "group": "Student screens",
+            "pages": [
+              "students-list",
+              "student-upsert-modal",
+              "students-import",
+              "parent-student-relationships"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Parents",
+        "pages": [
+          "parents",
+          {
+            "group": "Parent screens",
+            "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
+          }
+        ]
+      },
+      {
+        "group": "Risk bank",
+        "pages": [
+          "risk-bank",
+          {
+            "group": "Risk bank screens",
+            "pages": ["risk-bank-page", "risk-bank-tree", "risk-bank-modals"]
+          }
+        ]
+      },
       "changelog",
       {
         "group": "Excursions",

@@ -1,0 +1,95 @@
+---
+title: "Form builder and submissions"
+description: "The form builder is where you design a form’s fields, configure form settings (including publishing), and review submissions."
+---
+
+The form builder is where you design a form’s fields, configure form settings (including publishing), and review submissions.
+
+## What this screen is for
+
+- Build the questions and layout for a form.
+- Save changes safely while editing.
+- Publish a public form link when allowed.
+- Review submitted responses.
+
+## What you can see
+
+### Top bar
+
+- **Back to forms** navigation.
+- The form title (or **Untitled Form** if not set).
+- A status line showing **Unsaved changes** or **All changes saved**.
+- Tabs for **Form Builder** and **View Submissions**.
+- **Settings** opens the form settings panel.
+- **Save Form** stores the current builder state.
+
+### Builder tab
+
+- A live preview area showing the form title, description, and fields.
+- An **Add Field** menu grouped into:
+  - **Input Fields**
+  - **Selection Fields**
+  - **Layout Fields**
+  - **Excursion Fields** (when available)
+- Some field types may be disabled if they cannot be added to the current form.
+- Each field appears as a card you can select, reorder using the **Reorder field** handle, and delete using **Delete field**.
+- When no fields exist yet, you see **No fields yet** with guidance to add the first field.
+
+### Settings panel
+
+The settings panel is titled **Form Settings** and includes:
+
+- **Title**
+- **Description**
+- **Form type** (with helper text explaining how types behave)
+- **Linked excursion** (when relevant), including a **None** option
+- **Submit Button** label text
+- **Success Message** text
+- A **Published** switch with the note **Published forms can be opened by anyone with the link.**
+- When published, a read-only **public URL** field with a **Copy** action
+- A reminder to use **Save Form** to persist settings changes
+
+### Submissions tab
+
+- A **Submissions** section with a count badge.
+- A searchable submissions grid.
+- Keyboard shortcut hints for grid navigation where supported.
+
+## Common actions
+
+### Add and arrange fields
+
+Use **Add Field** to insert a new field, then select the field card to edit settings in the right panel.
+
+Drag fields to reorder them.
+
+### Save your work
+
+Use **Save Form** after meaningful edits. The header status line confirms whether everything is saved.
+
+### Publish for public access
+
+In settings, turn on **Published** when the form is ready, then copy the public link for distribution.
+
+If your role cannot publish forms, publishing changes may be rejected when saving even though the controls are visible.
+
+### Review responses
+
+Open **View Submissions** to load and browse responses. The builder may prefetch submissions when you focus the tab to make switching faster.
+
+## Empty, loading, and error states
+
+- If the form cannot load, you see **Failed to load form** with a message.
+- Submissions show **Loading submissions...** while fetching.
+- If submissions cannot load, you see **Failed to load form submissions** with a message.
+- If there are no submissions yet, you see **No submissions have been received yet.**
+
+## Permissions and read-only behaviour
+
+Saving the form requires permission to manage forms. Publishing changes additionally requires permission to publish forms for the workspace.
+
+## Tips
+
+- Save after adding several fields so you do not lose work.
+- Use the settings panel to keep submit button and success message wording parent-friendly.
+- Use submissions search when diagnosing missing or unexpected responses.

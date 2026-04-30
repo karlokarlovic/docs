@@ -1,0 +1,92 @@
+---
+title: "Parent, student, and staff relationships"
+description: "The relationship manager is a shared panel used from both the Students and Parents pages. It links people together in a workspace-scoped way, such as parent-to-student relationships."
+---
+
+The relationship manager is a shared panel used from both the Students and Parents pages. It links people together in a workspace-scoped way, such as parent-to-student relationships.
+
+## What this screen is for
+
+- Choose a relationship type.
+- Search for a related person in the workspace.
+- Set relationship flags used by future communication and approval workflows.
+- Review and maintain existing active relationships.
+
+## What you can see
+
+### Panel framing
+
+When opened from a student, the title looks like **Manage Relationships:** followed by that student’s name, and the description explains you can create, edit, and end workspace-scoped person relationships for that student.
+
+When opened from a parent, the title looks like **Manage Relationships:** followed by that parent’s name, and the description explains the same for that parent.
+
+### Left side: create or update a relationship
+
+Introductory copy explains directional labels and that you can relate the current record to students, parents, or staff.
+
+Fields and controls:
+
+- **Relationship type** selector, with helper text that relationship types are managed in workspace settings
+- **Current record label** (direction) selector when the relationship type is not symmetric, with helper text explaining outbound vs inbound labelling
+- **Related person** area:
+  - If someone is already selected, a summary card shows their name, a type badge, optional secondary text, and **Clear**
+  - A search box with placeholder **Search students, parents, or staff**
+  - Helper text explaining staff results are workspace memberships
+  - A results list with candidate names, type badges, optional secondary text, and a **Selected** badge on the active choice
+- **Start date** calendar picker, with helper text that leaving it blank defaults to today when creating a new relationship, plus **Clear date** when a date is set
+- Switches:
+  - **Receives excursion communications** (with helper text that delivery wiring is still upcoming)
+  - **Can approve child excursions** (with helper text that this is stored for future excursion flows)
+- Primary actions:
+  - **Add relationship** when creating
+  - **Update relationship** when editing an existing row
+  - **Cancel edit** when editing
+
+### Right side: active relationships
+
+A section titled **Active relationships** explains rows are shown from the current record’s perspective.
+
+Each relationship card shows:
+
+- A relationship label badge from the current record’s perspective
+- The related person’s name and type badge
+- Optional secondary text
+- Summary badges for relationship type, communication preference, approval preference, and start date when present
+- **Edit** and **End** actions
+
+States:
+
+- While loading, you see **Loading relationships...**
+- If there are no relationships, you see **No active relationships** with guidance to add the first relationship from the left form
+
+## Common actions
+
+### Add a relationship
+
+Choose a relationship type, choose direction if needed, search and select a person, adjust switches, then choose **Add relationship**.
+
+### Update a relationship
+
+Choose **Edit** on an active relationship row, adjust fields, then choose **Update relationship**.
+
+### End a relationship
+
+Choose **End**. The interface asks you to confirm because ending is a deliberate removal of an active link.
+
+## Error states
+
+- **Unable to save relationship** when a save fails
+- **Unable to load relationships** when the list cannot load
+- **Unable to load relationship types** when configuration cannot load
+
+## Permissions and read-only behaviour
+
+Saving, updating, ending, and several field interactions are disabled when you cannot manage relationships.
+
+Note: some switches may remain interactive even when saving actions are disabled. If you cannot manage relationships, rely on the disabled save actions rather than assuming switch changes will persist.
+
+## Tips
+
+- Pick relationship types that match your school’s language (mother, father, guardian) as configured in workspace settings.
+- Use **Start date** when relationships should not appear as active before a certain day.
+- Use the direction selector when the wording must match how your school describes the connection.

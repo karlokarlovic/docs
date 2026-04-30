@@ -1,0 +1,55 @@
+---
+title: "Locations import"
+description: "The import page helps you upload many locations at once using a spreadsheet template, preview validation results, and import only the rows that are ready."
+---
+
+The import page helps you upload many locations at once using a spreadsheet template, preview validation results, and import only the rows that are ready.
+
+## What this screen is for
+
+- Download a CSV template with the required column headers.
+- Upload a `.csv` or `.xlsx` file.
+- Preview which rows will create or update records.
+- Import valid rows into the workspace.
+
+## What you can see
+
+- Title **Import Locations** with a subtitle explaining upload, review, and import.
+- A **Back to Locations** link.
+- A template card showing the exact header row:
+  - `ExternalId`, `ParentExternalId`, `LocationName`, `Address`, `Description`
+- A download button **Download template**
+- An upload card accepting `.csv` and `.xlsx`
+- A preview table when rows are parsed, including summary badges for totals, ready rows, creates, updates, and errors
+- Buttons such as **Import valid rows** and **Choose another file**
+- Alerts when the file cannot be parsed, when existing locations are required for preview, or after import completes
+
+## Common actions
+
+### Prepare a file
+
+Download the template and fill one row per location. The first sheet of an Excel workbook is used.
+
+### Upload and review
+
+Choose a file, then review the preview table. Rows with validation errors list the issues so you can fix the spreadsheet and upload again.
+
+### Import
+
+Choose **Import valid rows** when the preview shows ready rows and the workspace location list loaded successfully.
+
+## Limits and validation behaviour
+
+- Blank rows are skipped.
+- Imports are limited to **2000** rows per file; larger files show an error message.
+- The parser checks that the header row matches the template.
+
+## Permissions and read-only behaviour
+
+Even if you can open the import page, importing may fail if your workspace role cannot manage locations. If that happens, use the error message as guidance and ask an authorised staff member to complete the import.
+
+## Tips
+
+- Keep `ExternalId` stable if you plan to update the same locations later.
+- Use `ParentExternalId` to link imported child locations to imported parent locations.
+- Fix errors in the spreadsheet rather than trying to “force” invalid rows through.

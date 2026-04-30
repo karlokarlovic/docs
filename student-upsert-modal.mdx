@@ -1,0 +1,48 @@
+---
+title: "Student panel (add and edit)"
+description: "The student panel captures core identity fields and external identifiers used across the workspace."
+---
+
+The student panel captures core identity fields and external identifiers used across the workspace.
+
+## What this screen is for
+
+- Create a new student record.
+- Update an existing student record.
+
+## What you can see
+
+The panel title is **Add Student** or **Edit Student** with descriptions:
+
+- Add: **Add a student record that can be reused across the app later.**
+- Edit: **Update this student record and its external identifiers.**
+
+Fields include:
+
+- **First name**
+- **Last name**
+- **Preferred name** (optional), with a note that it is used for the primary display name when provided
+- **Date of birth** using a calendar picker, with validation if the date is invalid
+- **SIS ID**, **Secondary SIS ID**, and **Tertiary SIS ID** (optional)
+- **UPI ID** (optional)
+- **Wonde ID** (optional)
+- **Student email** (optional)
+
+Submit actions:
+
+- **Create Student** (or equivalent create label) when adding
+- **Save changes** when editing
+
+## Read-only and error states
+
+- If you cannot manage students, you may see **Read-only access** explaining only admins, managers, and members can create or edit student records.
+- If saving fails, you may see **Unable to save student** with details.
+
+## Permissions and read-only behaviour
+
+Editing requires student management permission. Fields and submit actions are disabled when you are read-only.
+
+## Tips
+
+- Prefer a consistent email strategy (school issued vs family email) before importing large cohorts.
+- Use secondary and tertiary SIS IDs only when your school systems require them.

@@ -1,0 +1,54 @@
+---
+title: "Students import"
+description: "The student import page lets you upload a CSV or Excel file, validate each row locally, and import rows that are ready."
+---
+
+The student import page lets you upload a CSV or Excel file, validate each row locally, and import rows that are ready.
+
+## What this screen is for
+
+- Download a template with required headers.
+- Upload `.csv` or `.xlsx` files.
+- Preview create vs update actions.
+- Import valid rows.
+
+## What you can see
+
+- Title **Import Students** with subtitle **Upload a CSV or Excel file, review validation issues, and import valid rows into this workspace.**
+- **Back to Students**
+- A template card listing headers:
+  - `SisId`, `FirstName`, `LastName`, `PreferredName`, `DateOfBirth`, `StudentEmail`, `SecondarySisId`, `TertiarySisId`, `UpiId`, `WondeId`
+- **Download template**
+- Upload UI accepting `.csv` and `.xlsx`
+- Preview badges for total rows, ready rows, creates, updates, and errors
+- Preview table rows with per-row status and error messages
+- **Import valid rows** and **Choose another file**
+- Alerts for file parsing failures, workspace student list load failures, read-only access, and an **Import complete** summary after a successful run
+
+## Common actions
+
+### Download and fill the template
+
+Use **Download template** to get a CSV with the exact header row required.
+
+### Upload and review
+
+Choose a file, then review the preview. Fix your spreadsheet and upload again if errors are reported.
+
+### Import
+
+Choose **Import valid rows** when the preview shows valid rows, the workspace student list loaded successfully, and you have permission to import.
+
+## Limits and validation behaviour
+
+- Imports are limited to **2000** rows per file.
+- The parser validates header correctness and skips blank rows.
+
+## Permissions and read-only behaviour
+
+If you have read-only access, the page shows a read-only alert and import actions should not succeed.
+
+## Tips
+
+- Keep `SisId` stable if you expect updates on re-import.
+- Treat the preview as the last safety check before writing many records.

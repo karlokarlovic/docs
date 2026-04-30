@@ -1,0 +1,68 @@
+---
+title: "Task panel (create, edit, view)"
+description: "Tasks open in a side panel (on smaller screens it may appear as a bottom drawer). The panel title changes depending on whether you are creating a task, editing a task, or viewing a task without edit…"
+---
+
+Tasks open in a side panel (on smaller screens it may appear as a bottom drawer). The panel title changes depending on whether you are creating a task, editing a task, or viewing a task without edit permission.
+
+## What this screen is for
+
+- Create a new task quickly from the workspace task list (or other linked entry points).
+- Update task details, assignment, and excursion links.
+- Review task history, comments, and documents when viewing an existing task.
+
+## What you can see (create / edit)
+
+- **Title** text field.
+- **Description** rich text editor (optional).
+- **Status** selector with icon labels.
+- **Priority** selector with icon labels.
+- **Due date** date picker. Due dates are date-only (no time of day). You can clear a selected due date.
+- **Assigned user** selector, including an **Unassigned** option.
+- **Excursion role** selector, including a **No role** option.
+- **Linked excursion** selector, including **No linked excursion**.
+- If the task is linked to excursion risk controls, an **Originating controls** list may show links back to the relevant excursion risk area.
+- For existing tasks, an **Activity** section summarises recent changes.
+- For existing tasks, tabs for **Comments** and **Documents**.
+- Footer actions **Cancel** and **Save changes** (or **Create task** when creating), when you have edit permission.
+
+## What you can see (read-only)
+
+If you open a task without permission to edit it, you may see a read-only notice explaining you can view but not change the task. Editing controls are disabled and the save footer actions are not shown.
+
+## Common actions
+
+### Save a task
+
+Choose **Save changes** (or **Create task**) to store updates. A success message confirms the save.
+
+### Cancel changes
+
+Choose **Cancel** to reset the form to the last loaded values and close the panel.
+
+### Discuss a task
+
+Use the **Comments** tab to post discussion on the task record.
+
+### Attach supporting files
+
+Use the **Documents** tab to upload and manage files related to the task, when available.
+
+### Jump to related risk controls
+
+If originating controls are listed, follow the link to open the related excursion in the risk management area.
+
+## Empty, loading, and error states
+
+- Field-level messages appear when a value is not valid (for example an invalid due date).
+- A general error alert may appear if the task cannot be saved.
+
+## Permissions and read-only behaviour
+
+Task editing is only available when your workspace role allows task management. If you are read-only, use the panel to review details without changing them.
+
+## Tips
+
+- Use the description for context that helps the assignee complete the work without extra messages.
+- If a task is excursion-specific, link the excursion so it is easy to find later.
+- Keep due dates realistic; date-only due dates are best used as day-level commitments.

@@ -1,0 +1,86 @@
+---
+title: "Risk bank modals and destructive actions"
+description: "Most bank edits happen through modal panels and confirmation flows."
+---
+
+Most bank edits happen through modal panels and confirmation flows.
+
+## Risk groups
+
+### Create or edit a risk group
+
+Open **New Risk Group** or choose **Edit** on a non-linked group.
+
+You can set fields such as title and description, then save. Successful saves show toast confirmations such as **Risk group created.** or **Risk group updated.**
+
+### Add a child group (composition)
+
+Use **Add Child Group** (wording may appear as **Add Child Risk Group** in the modal) to pick an existing bank group to compose under a parent group.
+
+If there are no valid groups to pick, the confirm action stays disabled until a valid selection exists.
+
+### Archive a group
+
+Archiving a group is immediate and shows a success toast such as **Risk group archived.**
+
+### Remove a linked child group
+
+Removing a linked composition shows a success toast such as **Linked risk group removed.** If the link record cannot be removed, you see an error message.
+
+## Hazards
+
+### Create a hazard
+
+Use **New Hazard** to capture hazard fields such as title, description, impact area, likelihood, severity, and primary staff responsibility.
+
+New hazard creation may attach the hazard to the selected group as part of the same flow.
+
+### Edit a hazard
+
+Use **Edit** on a hazard to update its fields.
+
+### Attach an existing hazard
+
+Use **Attach Existing Hazard** to pick a hazard that already exists in the bank but is not already attached to the group.
+
+### Archive a hazard
+
+If a hazard is not shared broadly, archive actions may run immediately with a toast such as **Hazard archived.**
+
+If a hazard is shared, you may see an **Archive Hazard** disposition panel with choices such as:
+
+- **Archive This Record** (archive only the link for this group)
+- **Archive All Records** (archive the hazard everywhere)
+
+Successful paths show toasts such as **Hazard record archived.** or **Hazard archived.**
+
+## Controls
+
+### Create or edit a control
+
+Use **Add Control** or **Edit** on a control to set fields such as title, description, primary staff responsibility, and schedule timing (before, during, or after).
+
+Successful saves show toasts such as **Control created.** or **Control updated.**
+
+### Archive a control
+
+Archiving shows a toast such as **Control archived.**
+
+## Common failure messages
+
+- **Unable to save risk group**
+- **Unable to save hazard**
+- **Unable to save control**
+- **Unable to attach hazard**
+- **Unable to add child group**
+- **Unable to archive hazard**
+
+## Permissions and read-only behaviour
+
+If you cannot perform writes, expect these modals and menu actions to error on submit even though they may still appear in the interface.
+
+## Tips
+
+- Prefer **Archive This Record** when a hazard should disappear from one group but remain valid elsewhere.
+- Use **Attach Existing Hazard** when multiple groups share the same underlying hazard definition.
+- After large edits, scan the tree with search to confirm names and linkage look correct.
