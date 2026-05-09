@@ -49,6 +49,31 @@ The location section shows where the excursion is taking place. If you have perm
 
 Linked locations come from your saved location records. Manual locations let you enter details directly, including name, address, coordinates, and description.
 
+### Weather
+
+Below the location panel, the Weather card shows current and forecast conditions for the excursion location around the departure time. It uses the OpenWeather provider and refreshes automatically when the cached data is stale.
+
+The card surfaces:
+
+- **Current conditions**, including a summary, description, temperature, and "feels like" temperature.
+- **Temperature range**, shown against your workspace's minimum and maximum temperature thresholds when configured. A badge highlights whether conditions are within range, above the maximum, or below the minimum.
+- **UV index**, with a plain-language label (Low, Moderate, High, Very high, Extreme) and your workspace UV limit when set.
+- **Wind speed** in metres per second, also shown in kilometres per hour, alongside the workspace wind limit when configured.
+- **Rainfall** in millimetres, the chance of precipitation, and your workspace wet-weather threshold when configured.
+- **Air quality index** with a label and your workspace AQI limit when configured.
+
+Use **Refresh weather** in the card header to force an update. The button is rate limited to keep provider usage in check.
+
+The card displays a status badge that explains why data may be missing:
+
+- `missing location` — add a valid mapped location to see weather.
+- `out of range` — weather is only available closer to the excursion date.
+- `historical unavailable` — past weather is not available from the current provider.
+- `provider error` — the provider could not be reached; try refreshing.
+- `ready` — current data is shown.
+
+Workspace thresholds for temperature, wind, rainfall, UV, and air quality come from your **workspace excursion settings**. Configure these to compare excursion conditions against your safety limits.
+
 ## Common Workflows
 
 ### Prepare the excursion summary
