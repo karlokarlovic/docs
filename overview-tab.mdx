@@ -49,6 +49,28 @@ The location section shows where the excursion is taking place. If you have perm
 
 Linked locations come from your saved location records. Manual locations let you enter details directly, including name, address, coordinates, and description.
 
+### Weather
+
+The weather card sits below the Location section and shows a forecast for the excursion's location and departure time. It uses cached OpenWeather data so you can plan around conditions before the day arrives.
+
+The card shows:
+
+- A condition icon and short summary (for example, "Light rain" or "Clear sky").
+- Temperature, with a status indicator when your workspace has minimum or maximum temperature thresholds set.
+- Rainfall, wind speed, cloud cover, and visibility metrics.
+- UV index with a rating from Low to Extreme.
+- Air quality data when available.
+- The time the weather data was last fetched.
+
+Weather refreshes automatically when the cached data is stale—for example, when the location or departure time changes, or when the cached forecast has expired. You can also click **Refresh** to fetch the latest forecast on demand.
+
+When weather can't be shown, the card explains why:
+
+- **Add a valid mapped location to see weather.** The excursion is missing coordinates. Edit the location to use a linked or geocoded address.
+- **Weather can't be shown yet. Please come back closer to the excursion date.** The departure date is too far in the future for the forecast window.
+- **Historical weather isn't available from the current provider.** The departure date has already passed.
+- **Weather couldn't be loaded right now. Try refreshing.** A temporary provider error. Click **Refresh** to try again.
+
 ## Common Workflows
 
 ### Prepare the excursion summary
@@ -68,3 +90,4 @@ Review the written sections and properties together. Missing description, learni
 - Keep the description clear enough for another staff member to understand the excursion without extra context.
 - Use comments for discussion and decisions, not as the only place for important final details.
 - Check the location before creating public information or parent-facing content.
+- Set workspace temperature thresholds in your excursion settings so the weather card highlights when conditions fall outside acceptable ranges.
