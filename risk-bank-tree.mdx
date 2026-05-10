@@ -33,6 +33,14 @@ The bank is browsed as a hierarchical tree of groups, hazards, and controls.
 
 Rows provide an actions menu (and a matching right-click menu when available) for operations such as creating child items, editing, attaching, archiving, composing linked groups, and removing linked records, depending on the item type and linkage state.
 
+### Grid view: Open button and context menu
+
+When the bank is shown as a data grid, the type cell on each row includes an **Open** button. Clicking **Open** launches the edit modal for that item — group, hazard, or control — using the action that matches its type.
+
+You can also right-click any row to open a context menu with an **Edit** action. Both entry points open the same modal, so you can pick whichever is faster while scanning the grid.
+
+Edit actions are disabled on rows that cannot be edited inline (for example, rows that need to be opened from their parent context).
+
 ### Visual cues
 
 - Groups, hazards, and controls use distinct icons.
