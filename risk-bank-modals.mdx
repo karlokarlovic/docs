@@ -66,6 +66,43 @@ Successful saves show toasts such as **Control created.** or **Control updated.*
 
 Archiving shows a toast such as **Control archived.**
 
+## AI description suggestions
+
+Hazard and control description fields include an **AI** button (with a wand icon) that opens an AI review panel. Use it to draft or refine descriptions without leaving the modal.
+
+### Open the AI panel
+
+Click **AI** next to the description field on a hazard or control. A side panel labelled **AI review** appears with the prompt **Review the proposed description before saving.**
+
+### Send an instruction
+
+Type what you want the AI to do in the **Tell AI what to change...** box, then click **Send**. While the request runs, the button shows **Thinking...** and stays disabled.
+
+The AI uses the item's title and any context it can see — including the current description, risk group, hazard, likelihood, severity, impact area, primary role, and control schedule — to draft a complete replacement description.
+
+### Review the diff
+
+The panel shows a token-level diff of the current description against the AI suggestion:
+
+- Green text marks **inserted** content.
+- Red strikethrough text marks **deleted** content.
+- Unchanged text appears as plain text.
+
+Recent chat messages between you and the AI appear above the input so you can refine the suggestion across multiple turns. Only the last few messages are kept as context.
+
+### Accept or reject
+
+- Click **Accept changes** to replace the description field with the AI suggestion. The panel closes and you can continue editing or save the modal.
+- Click **Reject changes** (or the close icon) to discard the suggestion and clear the chat.
+
+You must accept changes before the description field updates. Saving the modal still requires the same permissions as a normal edit.
+
+### Failure handling
+
+If the AI cannot return a usable suggestion, the panel shows an **AI suggestion failed** alert and a toast reading **AI could not improve this description right now.** Try a different instruction or write the description yourself.
+
+Only staff who can manage risk management can use AI description suggestions.
+
 ## Common failure messages
 
 - **Unable to save risk group**
