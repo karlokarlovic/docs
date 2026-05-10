@@ -1,0 +1,98 @@
+---
+title: "Blog posts"
+description: "Create, edit, schedule, and publish blog posts from the admin. Manage drafts with autosave, hero images, categories, authors, and SEO metadata."
+---
+
+The Posts collection is where you write and publish blog articles. You manage posts from the admin at `/admin/collections/posts`. Published posts appear on the public blog index and at `/blog/{slug}`.
+
+## What this screen is for
+
+- See all posts in the workspace, with title, slug, published date, and last update.
+- Create a new post and write its content in a rich text editor.
+- Save drafts, schedule a publish time, and promote drafts to published.
+- Set categories, authors, and per-post SEO metadata.
+
+## What you can see
+
+- Default columns **Title**, **Slug**, **Published at**, and **Updated at**.
+- A search box that matches against **Title**, **Slug**, and **Excerpt**.
+- A **Create new** button to start a post.
+- Tabs on the post editor for **Content**, **Meta**, and **SEO**.
+
+## Common actions
+
+### Create a post
+
+1. Open the admin and go to **Posts**.
+2. Choose **Create new**.
+3. Enter a **Title**. The slug is generated for you and used in the post URL (`/blog/{slug}`).
+4. On the **Content** tab, fill in:
+   - **Excerpt** — a short summary used on the blog index and as SEO fallback.
+   - **Hero image** — upload or choose a media item to display at the top of the post and on the index card.
+   - **Content** — write the post in the rich text editor. You can use headings (H2–H4), links, image uploads, horizontal rules, and inline formatting.
+5. On the **Meta** tab, choose one or more **Categories** and one or more **Authors**.
+6. On the **SEO** tab, set **Meta title**, **Meta description**, and **Meta image**, then review the preview.
+7. Save the post as a draft, or change the status to **Published** to make it live.
+
+### Save and recover drafts
+
+Posts autosave roughly every second while you edit. Drafts are kept separate from the published version, so visitors only see what you have explicitly published.
+
+The collection keeps up to 50 versions per post, so you can compare changes and restore an earlier version if needed.
+
+### Schedule a publish time
+
+You can schedule a draft to publish automatically:
+
+1. Open the post and choose to schedule publishing.
+2. Set the **Published at** date and time.
+3. Save the schedule. The post moves to **Published** status at that time.
+
+If you publish a post without a **Published at** value, the platform sets it to the current time on the first publish.
+
+### Edit a published post
+
+Open the post, make your changes, and save. New edits create a new draft so the public version stays unchanged until you republish.
+
+### Manage authors
+
+On the **Meta** tab, choose authors from the **Users** collection. Each author's display name comes from their user profile and appears on the post page (for example, _By Jane Doe, John Smith_).
+
+## Fields reference
+
+The post editor exposes the following fields:
+
+| Field | Where | Description |
+| --- | --- | --- |
+| Title | Top of editor | Used as the post heading and fallback SEO title. |
+| Slug | Sidebar | URL segment for the post. Auto-generated from title; editable. |
+| Excerpt | Content tab | Short summary for the index and SEO fallback. Required. |
+| Hero image | Content tab | Image shown on the index card and at the top of the post. |
+| Content | Content tab | Rich text body, with headings, links, uploads, and horizontal rules. Required. |
+| Categories | Meta tab | One or more categories to group the post. |
+| Authors | Meta tab | One or more users credited as authors. |
+| Meta title | SEO tab | Title used in search results and social shares. |
+| Meta description | SEO tab | Description used in search results and social shares. |
+| Meta image | SEO tab | Image used for social share previews. |
+| Published at | Sidebar | Date and time the post becomes public. |
+
+## Where posts appear
+
+- **Blog index** at `/blog`, sorted with the most recently published first.
+- **Search results** when a visitor enters a query in the blog search box. Search matches against **Title**, **Slug**, and **Excerpt**.
+- **Individual post page** at `/blog/{slug}`, with hero image, categories, authors, and rich text content.
+- **Sitemap** at `/sitemap.xml`, with a `lastmod` date based on the post's `updatedAt` or `publishedAt`.
+- **Structured data** (JSON-LD) on each post page, so search engines can render rich results.
+
+## Permissions
+
+- Anyone signed in to the admin can create, update, and delete posts.
+- Public visitors can read **published** posts only. Drafts are restricted to admin users.
+- Categories and media are readable by anyone; only authenticated users can change them.
+
+## Tips
+
+- Keep titles under about 60 characters so they display in full in search results.
+- Use the **Excerpt** field — it doubles as the meta description fallback.
+- Add a **Meta image** sized 1200 × 630 px for crisp social share previews.
+- Use **Headings (H2/H3)** to break up long posts; this also helps search engines parse the page.

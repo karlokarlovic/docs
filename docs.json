@@ -110,6 +110,17 @@
             "root": "parents",
             "icon": "users",
             "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
+          },
+          {
+            "group": "Blog",
+            "root": "blog",
+            "icon": "newspaper",
+            "pages": [
+              "blog-posts",
+              "blog-categories",
+              "blog-media",
+              "blog-seo"
+            ]
           }
         ]
       },

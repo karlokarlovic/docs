@@ -1,0 +1,62 @@
+---
+title: "Blog media"
+description: "Upload and manage images for blog posts. Each upload is resized for thumbnails, hero images, and social shares, with required alt text."
+---
+
+The Media collection stores the images and files you use in blog posts. Uploads are processed automatically into the sizes the blog needs.
+
+## What this screen is for
+
+- Upload images for use as post hero images, in-post media, and social share previews.
+- Add accessible alt text and optional captions to every upload.
+- Reuse a single upload across multiple posts.
+
+## What you can see
+
+The Media list at `/admin/collections/media` shows:
+
+- Default columns **Filename**, **Alt**, and **Updated at**.
+- A thumbnail preview for each item.
+- A focal point control on each upload, so crops keep the right part of the image visible.
+
+## Common actions
+
+### Upload an image
+
+1. Open the admin and go to **Media**.
+2. Choose **Create new** and select an image from your device.
+3. Enter **Alt** text describing the image. Alt text is required.
+4. Optionally write a **Caption** in rich text.
+5. Adjust the focal point if you want a specific area to stay in view when the image is cropped.
+6. Save the upload.
+
+### Reuse an image in a post
+
+Open a post, select the **Hero image** or **Meta image** field, and choose an existing media item. You can also insert uploads inline in the rich text editor.
+
+### Update or replace an image
+
+Open the media item, change the alt text or caption, or replace the file. References from posts continue to work.
+
+## Generated image sizes
+
+Each upload is automatically resized for different uses:
+
+| Size | Dimensions | Where it's used |
+| --- | --- | --- |
+| `thumbnail` | 300 px wide | Admin previews and small blog cards. |
+| `large` | 1400 px wide | Blog index cards and hero images on post pages. |
+| `og` | 1200 × 630 px (centre crop) | Social share previews when posts are shared on social platforms. |
+
+The blog index and post pages automatically use the `large` size, and SEO and social previews use the `og` size.
+
+## Permissions
+
+- Anyone signed in to the admin can upload, update, and delete media.
+- Public visitors can read media files referenced by published content.
+
+## Tips
+
+- Always write meaningful **Alt** text — it improves accessibility and SEO.
+- Upload images at least 1400 px wide so the `large` size renders sharp.
+- Use the focal point to keep faces or key subjects visible after cropping.

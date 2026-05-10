@@ -1,0 +1,60 @@
+---
+title: "Blog SEO and sitemap"
+description: "Control how blog posts appear in search and on social. Set per-post metadata, preview results, and rely on built-in sitemap and robots files."
+---
+
+The blog ships with built-in SEO so posts are discoverable in search and look right when shared. You control the metadata for each post; the platform handles the sitemap, robots, and structured data.
+
+## Per-post SEO
+
+Every post has an **SEO** tab in the editor with the following fields:
+
+- **Meta title** — the title shown in search results and on social cards. Falls back to the post title if empty.
+- **Meta description** — the description shown in search results and on social cards. Falls back to the post excerpt if empty.
+- **Meta image** — the image shown on social cards. Choose an upload from the [Media](blog-media) collection. Falls back to the hero image.
+- **Preview** — a live preview that shows how the search result and social card will look.
+- **Overview** — quick guidance on the recommended length and what's filled in.
+
+### Set SEO for a post
+
+1. Open the post and go to the **SEO** tab.
+2. Enter a **Meta title** (aim for 50–60 characters).
+3. Enter a **Meta description** (aim for 130–160 characters).
+4. Choose a **Meta image**. Use a 1200 × 630 px image for the best result on social platforms.
+5. Review the **Preview** before saving.
+
+## Sitemap
+
+The blog automatically publishes a sitemap at `/sitemap.xml`. It includes:
+
+- The home page (`/`).
+- The blog index (`/blog`).
+- Every published post (`/blog/{slug}`), with `lastmod` based on the post's last update.
+
+You don't need to add posts to the sitemap manually — they appear as soon as they're published.
+
+## Robots
+
+A `robots.txt` is published at `/robots.txt`. It allows crawling of public pages and the blog, and disallows the admin and API:
+
+```text
+User-agent: *
+Allow: /
+Allow: /blog
+Disallow: /admin
+Disallow: /api
+Sitemap: https://anyschool.ai/sitemap.xml
+```
+
+## Structured data
+
+Each post page includes JSON-LD structured data for an `Article`, with the post's title, description, hero image, authors, and publish date. This helps search engines render rich results.
+
+You don't need to configure structured data — it's generated for every published post.
+
+## Tips
+
+- Use the Preview on the SEO tab to spot issues before publishing.
+- Keep meta titles under 60 characters and descriptions under 160 characters to avoid truncation.
+- Upload a dedicated 1200 × 630 px share image for posts you want to promote heavily.
+- After publishing, submit your sitemap URL to your search console of choice for faster indexing.
