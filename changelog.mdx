@@ -4,6 +4,22 @@ description: "Read release notes for AnySchool.ai including new features, improv
 icon: "newspaper"
 ---
 
+<Update label="2026-05-11" description="Weekly release" tags={["Features", "Updates"]}>
+
+## New features
+
+- **Table of contents on blog posts.** Blog post pages now show an "On this page" sidebar that lists every heading (h2–h6) in the post, with nested indentation for sub-sections and stable anchor links you can copy and share. The sidebar sticks to the top of the viewport while you scroll on larger screens and is hidden automatically on posts without headings.
+- **Rich media in blog posts.** Authors can now embed the following content types in blog posts using the rich text editor:
+  - **YouTube videos.** Paste a YouTube embed URL (`https://www.youtube.com/embed/…`, including `youtube-nocookie.com`) to add a responsive 16:9 player that lazy-loads on the public blog. Embed sources are validated, so only known YouTube hosts render.
+  - **Tables.** Insert tables into a post to present comparison data, schedules, or structured information. Tables scroll horizontally on narrow viewports so they stay readable on mobile.
+  - **Bookmark anchors.** Drop an empty `<a id="…"></a>` anchor anywhere in a post to create a fragment link target. Combined with the new table of contents, this makes it easy to deep-link to specific sub-sections from emails or other posts.
+
+## Updates
+
+- **Blog post imports accept HTML.** The Outrank webhook integration now publishes articles that ship HTML content (not just Markdown), so anchors, tables, and embedded media survive import end-to-end.
+
+</Update>
+
 <Update label="2026-05-10" description="Weekly release" tags={["Features", "Updates"]}>
 
 ## New features
