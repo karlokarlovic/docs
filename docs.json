@@ -158,6 +158,9 @@
     "timestamp": true
   },
   "seo": {
-    "indexing": "all"
+    "indexing": "all",
+    "metatags": {
+        "canonical": "https://www.anyschool.ai"
+    }
   }
 }
