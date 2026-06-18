@@ -1,0 +1,75 @@
+---
+title: "Workspace settings"
+description: "Manage workspace-wide configuration such as members, billing, API tokens, email templates, email themes, AI settings, relationship types, statuses, roles, and approvals."
+icon: "gear"
+---
+
+Workspace settings are where authorised staff configure how the workspace behaves across excursions, communication, people records, risk management, and integrations.
+
+The tabs you can see depend on your workspace role and permissions. If a restricted tab is opened directly, AnySchool.ai returns you to a settings area you can access.
+
+## Admin and workspace controls
+
+Common workspace settings include:
+
+- **Members** for inviting staff, changing access, and reviewing workspace membership.
+- **Billing** for subscription status, paid-seat capacity, email usage, AI usage, checkout, invoices, and the Stripe customer portal.
+- **AI settings** for workspace AI configuration, including the model used by AI chat where enabled.
+- **API tokens** for creating and revoking bearer tokens used with the public API.
+- **Workspace** for general workspace details.
+
+## Communication settings
+
+### Email templates
+
+Email templates let admins create reusable excursion email layouts and message defaults. Templates can include a subject, sender details, default recipients, message content, and an email theme.
+
+Use templates for recurring communication such as permission reminders, final instructions, staff updates, or post-excursion follow-up.
+
+### Email themes
+
+Email themes control the appearance of rendered workspace emails. A theme can define colours, fonts, header content, footer content, and whether it should be the primary theme.
+
+Use themes when family-facing communication should match school branding or include consistent contact details.
+
+## Excursion and people configuration
+
+Settings can also include:
+
+- **Relationship types** for defining how students, parents, guardians, and staff can be linked.
+- **Statuses** for workspace-specific excursion status labels, icons, and colours.
+- **Excursion types** and **activity types** for categorising excursions and applying planning defaults such as supervision ratios.
+- **Impact areas** and **excursion roles** for risk management and responsibility assignment.
+- **Approvals** for configuring review workflows used before an excursion proceeds.
+
+## API tokens
+
+Workspace admins can create API tokens from the **API tokens** tab for approved integrations.
+
+Token behaviour:
+
+- Tokens are scoped to one workspace.
+- Tokens require a name and expiry date.
+- The full token is shown once after creation and cannot be viewed again later.
+- Active tokens can be revoked, after which requests using that token fail immediately.
+
+For endpoint behaviour and examples, see [Public API](/public-api).
+
+## Billing and usage
+
+The **Billing** tab shows plan information, paid-seat capacity, email usage, and AI usage where billing is enabled.
+
+Important behaviours:
+
+- Active or invited admins and managers count toward paid-seat capacity.
+- Standard members do not count toward the paid-seat limit.
+- New admin or manager invites and role changes can be blocked when the paid-seat limit would be exceeded.
+- Email usage is counted from sent email records that the provider accepts or delivers.
+- AI usage increments after successful billable AI completions and can be blocked when far over the plan limit.
+- Payments, invoices, subscriptions, and purchased seats are managed through Stripe.
+
+## Tips
+
+- Review access before creating API tokens or changing billing details.
+- Keep email themes and templates current before sending parent-facing messages at scale.
+- Use relationship types and role configuration early, so imports, permissions, reviews, and staffing use language your school recognises.

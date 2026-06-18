@@ -4,6 +4,85 @@ description: "Read release notes for AnySchool.ai including new features, improv
 icon: "newspaper"
 ---
 
+<Update label="18 June 2026" description="Workspace notifications now help staff track assignments, mentions, approvals, reminders, and submissions." tags={["Feature", "Improvement"]}>
+
+## What changed
+
+- **Notification inbox and bell.** Staff can review notifications from the workspace bell, open the full Notifications page, mark items read, archive items, and filter by **All**, **Unread**, or **Archived**. See [Notifications](/notifications).
+- **More notification triggers.** Staff can be notified for task assignments, comment mentions, approval steps, approval returns or rejections, newly added excursion staff, and configured form submissions.
+- **Operational reminders.** AnySchool.ai can remind the right staff about upcoming excursions, expiring vendor documents, and staff compliance items before they become overdue.
+- **Responsible staff on vendors.** Vendor records can identify an internal responsible staff member, who receives vendor document expiry reminders alongside workspace admins and managers. See [Vendors](/vendors).
+
+## Why it matters
+
+Important follow-up is easier to find, and schools can route reminders to the staff responsible for the work instead of relying on manual checks.
+
+</Update>
+
+<Update label="18 June 2026" description="The public API now supports workspace tokens, read endpoints, create endpoints, and safer integration retries." tags={["Feature", "API"]}>
+
+## What changed
+
+- **Workspace API tokens.** Admins can create and revoke workspace-scoped bearer tokens from workspace settings, with expiry dates, token prefixes, last-used tracking, and one-time token reveal. See [Workspace settings](/workspace-settings).
+- **Read records through the public API.** Integrations can list supported excursions, students, parents, vendors, locations, tasks, staff, groups, and risk bank records using stable public response shapes. See [Public API](/public-api).
+- **Create records through the public API.** Integrations can now create excursions, students, parents, vendors, locations, tasks, staff invites, groups, and selected risk bank records using JSON `POST` requests. See [Public API](/public-api).
+- **Safer retries for imports.** `POST` requests support an optional `Idempotency-Key` header so retrying the same request can replay the original successful response instead of creating a duplicate.
+- **Dedicated API host.** Production API requests use `https://api.anyschool.ai`, while the API host root redirects to the main AnySchool.ai website.
+- **Clearer API errors.** Public API responses now distinguish malformed requests, validation failures, conflicts, rate limits, and authentication problems with more specific status codes and error details.
+
+## Why it matters
+
+Schools and technical partners can connect external systems to AnySchool.ai with managed tokens, stable read and create workflows, safer retry behaviour, and more useful troubleshooting information.
+
+</Update>
+
+<Update label="18 June 2026" description="Excursion email workflows now support reusable templates, workspace branding, selected recipients, and richer personalisation." tags={["Feature", "Improvement"]}>
+
+## What changed
+
+- **Reusable email templates.** Admins can create shared excursion email layouts and message defaults from workspace settings. See [Workspace settings](/workspace-settings).
+- **Workspace email themes.** Schools can configure email colours, fonts, headers, and footers so rendered messages use consistent branding and contact details.
+- **Selected-participant sending.** Staff can select participant rows and email only those students, only their parents, or both within that selected group. See [Emails tab](/emails-tab).
+- **Variables and fallbacks.** Excursion and student variables can be inserted into messages, with fallback text for missing student values.
+- **AI-assisted permission reminders.** The AI assistant can help prepare permission reminder content in the excursion email composer, with staff review before sending.
+
+## Why it matters
+
+Common excursion communications are faster to prepare, easier to keep consistent, and safer to personalise for families and staff.
+
+</Update>
+
+<Update label="18 June 2026" description="Workspace setup, billing, account access, and people imports are easier to manage." tags={["Feature", "Admin", "Improvement"]}>
+
+## What changed
+
+- **Guided workspace setup.** New setup guides help admins invite users, configure roles, add students and parents, link relationships, and start core excursion workflows. Dismissed guides can be restored from the user menu. See [Quickstart](/quickstart).
+- **Billing and usage visibility.** Workspace settings can show plan status, paid-seat capacity, email usage, AI usage, checkout, invoices, and the Stripe customer portal. See [Workspace settings](/workspace-settings).
+- **Seat and usage guardrails.** Admin and manager seats count toward paid-seat capacity, while email and AI usage are tracked against plan limits.
+- **Combined people import.** Schools can import students, parents, and their relationship details through one people import workflow, reducing manual family-link setup. See [Students import](/students-import) and [Parents import](/parents-import).
+- **Improved account access.** Sign-up supports email confirmation codes, sign-up terms acceptance, and password reset/update flows for users who need to regain access.
+
+## Why it matters
+
+Schools can get a workspace ready with less manual follow-up, understand usage and billing limits, and recover user access without support intervention.
+
+</Update>
+
+<Update label="18 June 2026" description="AI chat gained better workspace context, navigation, history, and feedback controls." tags={["Improvement"]}>
+
+## What changed
+
+- **Dedicated workspace chat.** Staff can open a workspace chat page with conversation history and return to previous active conversations.
+- **Better context handling.** AI chat can resolve the current workspace and excursion context more reliably, including screen-aware actions such as navigating back to the current excursion.
+- **Prompt editing and feedback.** The chat experience includes a richer prompt editor and feedback controls for AI responses.
+- **Usage-aware AI.** Billable AI completions are counted toward workspace usage, so admins have clearer visibility of AI consumption from billing settings.
+
+## Why it matters
+
+Staff can use AI help with more relevant context, keep track of previous conversations, and give feedback when a response needs improvement.
+
+</Update>
+
 <Update label="2026-05-11" description="Weekly release" tags={["Features"]}>
 
 ## New features

@@ -52,6 +52,8 @@
       {
         "group": "Features",
         "pages": [
+          "workspace-settings",
+          "notifications",
           {
             "group": "Tasks",
             "root": "tasks",
@@ -112,6 +114,11 @@
             "pages": ["parents-list", "parent-upsert-modal", "parents-import"]
           }
         ]
+      },
+      {
+        "group": "Developers",
+        "icon": "code",
+        "pages": ["public-api"]
       },
       "changelog"
     ]

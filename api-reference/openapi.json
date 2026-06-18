@@ -1,16 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
+    "title": "AnySchool.ai Public API",
+    "description": "Read workspace records and create supported records in AnySchool.ai.",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.anyschool.ai"
     }
   ],
   "security": [
@@ -18,193 +15,1721 @@
       "bearerAuth": []
     }
   ],
+  "tags": [
+    {
+      "name": "Excursions"
+    },
+    {
+      "name": "People"
+    },
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "Risk bank"
+    }
+  ],
   "paths": {
-    "/plants": {
+    "/excursions": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "tags": ["Excursions"],
+        "summary": "List excursions",
+        "description": "Returns visible, non-archived, non-deleted excursions for the token workspace.",
+        "operationId": "listExcursions",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/PaginatedList"
           },
           "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
           }
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "tags": ["Excursions"],
+        "summary": "Create an excursion",
+        "description": "Creates one excursion in the token workspace. This endpoint does not update or upsert existing excursions.",
+        "operationId": "createExcursion",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
         "requestBody": {
-          "description": "Plant to add to the store",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/CreateExcursionRequest"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
+          "201": {
+            "$ref": "#/components/responses/Created"
           },
           "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
           }
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/students": {
+      "get": {
+        "tags": ["People"],
+        "summary": "List students",
+        "description": "Returns students in the token workspace. Use `include=parents` to include active parent relationships.",
+        "operationId": "listStudents",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported value: `parents`.",
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
           },
           "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
           }
         }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
+      },
       "post": {
-        "description": "Information about a new plant added to the store",
+        "tags": ["People"],
+        "summary": "Create a student",
+        "description": "Creates one student. Date of birth may be stored but is not returned in the public DTO.",
+        "operationId": "createStudent",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
         "requestBody": {
-          "description": "Plant added to the store",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/CreateStudentRequest"
               }
             }
           }
         },
         "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/parents": {
+      "get": {
+        "tags": ["People"],
+        "summary": "List parents",
+        "description": "Returns parents in the token workspace. Use `include=students` to include active student relationships.",
+        "operationId": "listParents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported value: `students`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["People"],
+        "summary": "Create a parent",
+        "description": "Creates one parent. Date of birth may be stored but is not returned in the public DTO.",
+        "operationId": "createParent",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateParentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/vendors": {
+      "get": {
+        "tags": ["Operations"],
+        "summary": "List vendors",
+        "description": "Returns vendors in the token workspace. Archived vendors are excluded by default.",
+        "operationId": "listVendors",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "$ref": "#/components/parameters/includeArchived"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported values: `location`, `responsibleStaff`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Operations"],
+        "summary": "Create a vendor",
+        "description": "Creates one vendor.",
+        "operationId": "createVendor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVendorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "tags": ["Operations"],
+        "summary": "List locations",
+        "description": "Returns locations in the token workspace. Archived locations are excluded by default.",
+        "operationId": "listLocations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "$ref": "#/components/parameters/includeArchived"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported values: `parent`, `children`, `vendors`, `excursions`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Operations"],
+        "summary": "Create a location",
+        "description": "Creates one location.",
+        "operationId": "createLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLocationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": ["Operations"],
+        "summary": "List tasks",
+        "description": "Returns visible, non-deleted tasks in the token workspace.",
+        "operationId": "listTasks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["todo", "inprogress", "done"]
+            }
+          },
+          {
+            "name": "excursionId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported values: `assignee`, `excursion`, `linkedControls`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Operations"],
+        "summary": "Create a task",
+        "description": "Creates one task.",
+        "operationId": "createTask",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/staff": {
+      "get": {
+        "tags": ["Operations"],
+        "summary": "List staff",
+        "description": "Returns workspace staff memberships. Active staff are returned by default.",
+        "operationId": "listStaff",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["INVITED", "ACTIVE", "INACTIVE", "EXPIRED"]
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported value: `compliance`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Operations"],
+        "summary": "Invite staff",
+        "description": "Invites one staff member and sends the workspace invite email. This endpoint is limited to 10 requests per minute per token.",
+        "operationId": "inviteStaff",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStaffInviteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/groups": {
+      "get": {
+        "tags": ["Operations"],
+        "summary": "List groups",
+        "description": "Returns student and people groups. This endpoint is separate from risk bank groups.",
+        "operationId": "listGroups",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["DRAFT", "ACTIVE", "INACTIVE", "ARCHIVED"]
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported value: `members`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Operations"],
+        "summary": "Create a group",
+        "description": "Creates one student or people group. This endpoint does not add members.",
+        "operationId": "createGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/risk-bank": {
+      "get": {
+        "tags": ["Risk bank"],
+        "summary": "Read the risk bank graph",
+        "description": "Returns the workspace risk bank graph with nested risk groups, hazards, and controls. Archived records are excluded by default.",
+        "operationId": "readRiskBank",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/includeArchived"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/risk-bank/groups": {
+      "get": {
+        "tags": ["Risk bank"],
+        "summary": "List risk bank groups",
+        "description": "Returns stable bank risk group records.",
+        "operationId": "listRiskBankGroups",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "$ref": "#/components/parameters/includeArchived"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported values: `children`, `hazards`, `controls`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Risk bank"],
+        "summary": "Create a risk bank group",
+        "description": "Creates a standalone risk group. It is not attached as a child of another group.",
+        "operationId": "createRiskBankGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRiskGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/risk-bank/hazards": {
+      "get": {
+        "tags": ["Risk bank"],
+        "summary": "List risk bank hazards",
+        "description": "Returns bank hazards.",
+        "operationId": "listRiskBankHazards",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "$ref": "#/components/parameters/includeArchived"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported values: `groups`, `controls`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Risk bank"],
+        "summary": "Create a risk bank hazard",
+        "description": "Creates a standalone hazard. It is not attached to a risk group.",
+        "operationId": "createRiskBankHazard",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRiskHazardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/risk-bank/controls": {
+      "get": {
+        "tags": ["Risk bank"],
+        "summary": "List risk bank controls",
+        "description": "Returns bank controls.",
+        "operationId": "listRiskBankControls",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageLength"
+          },
+          {
+            "$ref": "#/components/parameters/includeArchived"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma-separated relationship expansions. Supported values: `hazard`, `groups`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PaginatedList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Risk bank"],
+        "summary": "Create a risk bank control",
+        "description": "Creates a control under an existing bank hazard.",
+        "operationId": "createRiskBankControl",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRiskControlRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
           }
         }
       }
     }
   },
   "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "query",
+        "description": "Optional record identifier. When supplied, the endpoint returns zero or one record in the same paginated envelope.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "page": {
+        "name": "page",
+        "in": "query",
+        "description": "Positive page number. Defaults to 1.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        }
+      },
+      "pageLength": {
+        "name": "pageLength",
+        "in": "query",
+        "description": "Positive page size. Defaults to 25 and has a maximum of 100.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 25
+        }
+      },
+      "includeArchived": {
+        "name": "includeArchived",
+        "in": "query",
+        "description": "Whether to include archived records where supported. Defaults to false.",
+        "schema": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "idempotencyKey": {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "description": "Optional key for safely retrying a create request. Reusing the same key with a different request body returns 409.",
+        "schema": {
+          "type": "string",
+          "maxLength": 255
+        }
+      }
+    },
+    "responses": {
+      "PaginatedList": {
+        "description": "Paginated list response.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PaginatedResponse"
+            }
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
+      "Created": {
+        "description": "Record created.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreateResponse"
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Malformed query parameters, malformed JSON, missing JSON content type, invalid headers, or oversized request bodies.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Missing, malformed, invalid, expired, or revoked token.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "The requested resource was not found or the production request did not arrive on api.anyschool.ai.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "The request conflicts with the current resource state, such as reusing an Idempotency-Key with a different body.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "UnprocessableEntity": {
+        "description": "The request payload was valid JSON but failed validation.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "TooManyRequests": {
+        "description": "The token exceeded the public API request budget.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "ServerError": {
+        "description": "Unexpected server error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "PaginatedResponse": {
+        "type": "object",
+        "required": ["data", "pagination"],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
           },
-          {
-            "required": [
-              "id"
-            ],
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "required": ["currentPage", "lastPage", "pageLength", "numRecords"],
+        "properties": {
+          "currentPage": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "lastPage": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageLength": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "numRecords": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "CreateResponse": {
+        "type": "object",
+        "required": ["data"],
+        "properties": {
+          "data": {
             "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": ["code", "message"],
             "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+              "code": {
+                "type": "string",
+                "examples": ["unauthorized", "unprocessable_entity"]
+              },
+              "message": {
+                "type": "string"
+              },
+              "details": {
+                "description": "Optional field-level validation details.",
+                "type": "object",
+                "additionalProperties": true
               }
             }
           }
-        ]
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "CreateExcursionRequest": {
         "type": "object",
+        "required": ["name"],
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
+          "name": {
+            "type": "string"
           },
-          "message": {
+          "description": {
+            "type": "string"
+          },
+          "locationId": {
+            "type": "string"
+          },
+          "locationName": {
+            "type": "string"
+          },
+          "locationAddress": {
+            "type": "string"
+          },
+          "locationLatitude": {
+            "type": "string"
+          },
+          "locationLongitude": {
+            "type": "string"
+          },
+          "locationDescription": {
+            "type": "string"
+          },
+          "educationalValue": {
+            "type": "string"
+          },
+          "planForNonParticipatingStudents": {
+            "type": "string"
+          },
+          "departureAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "returnAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "excursionTypeId": {
+            "type": "string"
+          },
+          "activityTypeId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["DRAFT", "ACTIVE"],
+            "default": "DRAFT"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateStudentRequest": {
+        "type": "object",
+        "required": ["firstName", "lastName"],
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "preferredName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "sisId": {
+            "type": "string"
+          },
+          "secondarySisId": {
+            "type": "string"
+          },
+          "tertiarySisId": {
+            "type": "string"
+          },
+          "upiId": {
+            "type": "string"
+          },
+          "wondeId": {
+            "type": "string"
+          },
+          "studentEmail": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateParentRequest": {
+        "type": "object",
+        "required": ["firstName", "lastName"],
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "preferredName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "sisId": {
+            "type": "string"
+          },
+          "secondarySisId": {
+            "type": "string"
+          },
+          "tertiarySisId": {
+            "type": "string"
+          },
+          "upiId": {
+            "type": "string"
+          },
+          "wondeId": {
+            "type": "string"
+          },
+          "parentEmail": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateVendorRequest": {
+        "type": "object",
+        "required": ["name", "vendorType"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "vendorType": {
+            "type": "string",
+            "enum": ["FLIGHT", "BUS", "HOTEL", "TRAIN", "OTHER"]
+          },
+          "description": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "locationId": {
+            "type": "string"
+          },
+          "locationName": {
+            "type": "string"
+          },
+          "locationAddress": {
+            "type": "string"
+          },
+          "locationLatitude": {
+            "type": "string"
+          },
+          "locationLongitude": {
+            "type": "string"
+          },
+          "locationDescription": {
+            "type": "string"
+          },
+          "primaryContactFirstName": {
+            "type": "string"
+          },
+          "primaryContactLastName": {
+            "type": "string"
+          },
+          "primaryContactTitle": {
+            "type": "string"
+          },
+          "primaryContactEmail": {
+            "type": "string",
+            "format": "email"
+          },
+          "primaryContactOfficePhone": {
+            "type": "string"
+          },
+          "primaryContactMobilePhone": {
+            "type": "string"
+          },
+          "responsibleStaffWorkspaceMembershipId": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": true
+      },
+      "CreateLocationRequest": {
+        "type": "object",
+        "required": ["name", "address"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "parentLocationId": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateTaskRequest": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["todo", "inprogress", "done"],
+            "default": "todo"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["none", "low", "medium", "high", "urgent"],
+            "default": "none"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "assignedWorkspaceMembershipId": {
+            "type": "string"
+          },
+          "assignedExcursionRoleId": {
+            "type": "string"
+          },
+          "excursionId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateStaffInviteRequest": {
+        "type": "object",
+        "required": ["email", "role"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["ADMIN", "MANAGER", "MEMBER", "GUEST", "NONE"]
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateGroupRequest": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["DRAFT", "ACTIVE", "INACTIVE", "ARCHIVED"],
+            "default": "DRAFT"
+          },
+          "groupType": {
+            "type": "string",
+            "enum": ["CLASS", "COURSE", "COHORT", "HOUSE", "CUSTOM"],
+            "default": "CUSTOM"
+          },
+          "description": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "sisCode": {
+            "type": "string"
+          },
+          "classCode": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateRiskGroupRequest": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateRiskHazardRequest": {
+        "type": "object",
+        "required": ["title", "likelihood", "severity"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "likelihood": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "impactAreaId": {
+            "type": "string"
+          },
+          "primaryExcursionRoleId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "CreateRiskControlRequest": {
+        "type": "object",
+        "required": ["hazardId", "title", "scheduleMode"],
+        "properties": {
+          "hazardId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "scheduleMode": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "primaryExcursionRoleId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
       }
     },
     "securitySchemes": {

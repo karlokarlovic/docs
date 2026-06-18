@@ -18,9 +18,23 @@ The Emails tab helps you compose, review, and track emails connected to an excur
 
 ### Compose Email
 
-Use Compose Email to open the email composer. From there you can prepare a message connected to the excursion.
+Use Compose Email to open the email composer. From there you can prepare a message connected to the excursion, choose the audience, insert supported variables, and save a draft or send immediately.
 
 Depending on the context, the composer may also open from other places, such as participant actions or shared communication menus.
+
+The composer supports excursion and student variables, so one message can include details such as the excursion name or a student's first name. Add fallback text for student variables when a value may be missing.
+
+When workspace email templates are configured, staff can start from reusable layouts and default wording rather than composing every excursion message from scratch. Workspace email themes can also control the colours, fonts, header, and footer used in rendered emails.
+
+### Email selected participants
+
+From the Participants tab, select one or more participant rows and use the action bar to open the composer for only those selected students.
+
+The composer keeps that selected participant subset and then applies the chosen audience mode within that subset:
+
+- **Attendees** sends only to the selected students.
+- **Parents of attendees** sends only to the selected students' parents.
+- **Parents and attendees** sends to both for the selected students only.
 
 ### Edit Draft
 
@@ -64,6 +78,10 @@ Rows can expand to show recipient-level details such as name and delivery status
 
 Compose an email from the Emails tab and choose the appropriate recipients for the message.
 
+### Email a selected group of participants
+
+Select the relevant participant rows in the Participants tab, choose **Send email** from the action bar, then confirm the audience mode in the composer. Only the selected participants remain in scope.
+
 ### Continue a draft
 
 Open the drafts section, choose Edit draft, then review or finish the email before sending.
@@ -75,5 +93,7 @@ Use the sent table to review accepted and failed counts, then expand rows if you
 ## Tips
 
 - Review recipients carefully before sending parent-facing communication.
+- Use variables and fallbacks for messages that need personalisation across many recipients.
+- Use templates for recurring workflows such as permission reminders or final excursion instructions.
 - Use clear subject lines so families and staff understand the message.
 - Check failed sends if important information must reach every recipient.
