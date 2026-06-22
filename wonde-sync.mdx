@@ -1,0 +1,118 @@
+---
+title: "Wonde sync"
+description: "Connect an approved Wonde school and keep student, staff, and parent records in AnySchool.ai up to date on a schedule."
+---
+
+Wonde sync helps schools keep roster data in AnySchool.ai aligned with the student information system connected through Wonde.
+
+Supported sync types are **students**, **staff**, and **parents**. Once a school connection is configured, authorised staff can choose when each record type syncs, run incremental or full syncs manually, and review recent sync activity from workspace settings.
+
+## What this feature is for
+
+- Connect a school that has approved AnySchool.ai in Wonde.
+- Sync student, staff, and parent records into the workspace.
+- Choose exact daily incremental and full sync times in the school's local timezone.
+- Start a manual incremental or full sync when needed.
+- Review recent sync runs, status, object type, mode, and counts.
+
+## Where to find it
+
+Open **Workspace settings**, then choose **Wonde Sync**.
+
+The tab is available to workspace admins and managers. Wonde token setup is handled by authorised AnySchool.ai integration admins, so most school staff will only manage schedules and review sync status.
+
+## What you can see
+
+For each connected Wonde school, the page shows:
+
+- School name.
+- Wonde school ID.
+- Wonde region domain.
+- School timezone.
+- Connection status.
+- Token prefix and last validation time.
+- Separate panels for **Student sync**, **Staff sync**, and **Parent sync**.
+- For each sync type: enabled or disabled, incremental sync times, full sync times, chunk size, last successful sync, last incremental sync, and last full sync.
+- **Recent runs** for the workspace with scheduled time, status, object type, mode, applied count, and skipped count.
+
+## Common actions
+
+### Enable a sync type
+
+Turn on the sync switch for **Student sync**, **Staff sync**, or **Parent sync**, add one or more incremental and full sync times as needed, then save that panel.
+
+Sync times use 24-hour time, such as `06:30` or `15:00`.
+
+### Add sync times
+
+Use the time picker to add incremental sync times for routine updates and full sync times for broader reconciliation runs.
+
+You can remove a time by selecting its time button before saving.
+
+### Run a sync manually
+
+Each sync panel includes:
+
+- **Incremental sync** to queue a fast update for records changed since the last successful watermark.
+- **Full sync** to queue a broader reconciliation run across active Wonde records for that object type.
+
+Manual syncs appear in **Recent runs** with the same status and count fields as scheduled syncs.
+
+### Review recent runs
+
+Use **Recent runs** to check:
+
+- Whether a run is scheduled, running, completed, failed, or skipped.
+- Which object type ran: `STUDENT`, `STAFF`, or `PARENT`.
+- Whether it was incremental or full.
+- How many rows were applied.
+- How many rows were skipped.
+
+If rows are skipped, review the affected records and contact support if you need help resolving matching issues.
+
+## Student sync
+
+Student sync imports Wonde students into the workspace student roster.
+
+Important behaviour:
+
+- Existing student records can be matched using Wonde ID or SIS ID.
+- Students removed from Wonde are hidden from normal student lists instead of being permanently deleted.
+- Fields managed by Wonde sync are updated from Wonde on later syncs.
+
+## Staff sync
+
+Staff sync imports Wonde employees into the workspace staff directory.
+
+Important behaviour:
+
+- Imported staff appear with workspace role **None** and do not receive login access automatically.
+- Wonde staff sync does not send workspace invites or create login accounts.
+- A workspace admin can later change an imported staff member's role to invite them into the workspace when an email address is available.
+- Wonde-only staff removed from Wonde can be archived when they have no linked user account and still have role **None**.
+- Staff who already have workspace access or a non-**None** role are not removed automatically by Wonde sync.
+
+## Parent sync
+
+Parent sync imports Wonde contacts and links them to students that already exist in the workspace.
+
+Important behaviour:
+
+- Parent sync does not create students. Students should already be present from student sync or manual entry.
+- Parent records can be matched using Wonde ID, SIS ID, UPI ID, or parent email where safe.
+- Parent-student relationships from Wonde are created or updated for matched students.
+- Wonde-managed relationships that disappear from Wonde are ended automatically.
+- Parents removed from Wonde are archived rather than permanently deleted.
+- Contacts that cannot be linked to any existing local student may be skipped for review.
+
+## Incremental and full sync
+
+- **Incremental sync** is the normal fast path. It checks for Wonde records changed since the last successful watermark.
+- **Full sync** is the reconciliation path. It checks active Wonde records more broadly to correct drift in Wonde-managed fields.
+- If an incremental and full sync are due in the same scheduler window, the full sync runs and the incremental run is skipped for that window.
+- Sync schedules should reflect when your Wonde data is expected to be current.
+
+## Permissions
+
+- Workspace admins and managers can view Wonde sync settings, update sync schedules, and start manual syncs.
+- Only authorised AnySchool.ai integration admins can add, rotate, or revoke Wonde API tokens.

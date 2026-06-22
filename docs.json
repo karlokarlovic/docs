@@ -98,6 +98,7 @@
               "students-list",
               "student-upsert-modal",
               "students-import",
+              "wonde-sync",
               "parent-student-relationships"
             ]
           },
